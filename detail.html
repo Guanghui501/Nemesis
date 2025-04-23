@@ -51,7 +51,8 @@
             <p class="mb-2"><strong>Detonation Pressure (P<sub>d</sub>):</strong> <span id="pd"></span> GPa</p>
             <p class="mb-2"><strong>Reaction:</strong> <span id="reaction"></span></p>
             <p class="mb-4"><strong>Energy:</strong> <span id="energy"></span></p>
-
+            <p class="mb-4"><strong>doi:</strong> <span id="doi"></span></p>
+            
             <div class="button-container flex flex-wrap justify-center gap-4">
                 <button id="download-cif" class="btn bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md animate-hover" disabled>
                     <i class="fa-solid fa-download mr-2"></i> Download the CIF file
@@ -156,6 +157,7 @@ LWAVE  =  F</pre>
               .replace(/(-?\d+\.\d+)/g, (match) => parseFloat(match).toFixed(3))
               .replace(/([A-Za-z]+)(\d+)/g, (_, elem, num) => `${elem}<sub>${num}</sub>`);
             document.getElementById('energy').innerHTML = formattedEnergy;
+            document.getElementById('doi').innerHTML = material.energy ?? 'N/A';
         }
 
         function initializeViewer(material) {
