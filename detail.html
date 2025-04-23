@@ -50,7 +50,7 @@
             <p class="mb-2"><strong>Detonation Velocity (V<sub>d</sub>):</strong> <span id="vd"></span> km/s</p>
             <p class="mb-2"><strong>Detonation Pressure (P<sub>d</sub>):</strong> <span id="pd"></span> GPa</p>
             <p class="mb-2"><strong>Reaction:</strong> <span id="reaction"></span></p>
-            <p class="mb-4"><strong>Energy:</strong> <span id="energy"></span></p>
+            <p class="mb-2"><strong>Energy:</strong> <span id="energy"></span></p>
             <p class="mb-4"><strong>doi:</strong> <span id="doi"></span></p>
             
             <div class="button-container flex flex-wrap justify-center gap-4">
@@ -157,7 +157,7 @@ LWAVE  =  F</pre>
               .replace(/(-?\d+\.\d+)/g, (match) => parseFloat(match).toFixed(3))
               .replace(/([A-Za-z]+)(\d+)/g, (_, elem, num) => `${elem}<sub>${num}</sub>`);
             document.getElementById('energy').innerHTML = formattedEnergy;
-            document.getElementById('doi').innerHTML = material.energy ?? 'N/A';
+            document.getElementById('doi').innerHTML = material.doi ?? 'N/A';
         }
 
         function initializeViewer(material) {
