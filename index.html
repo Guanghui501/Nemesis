@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,17 +36,64 @@
         #data-table td {
             font-size: 1.2rem;
         }
-        
+
         .animate-hover:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        
+
+        /* 作者信息样式 */
+        .author-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-top: 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .author-info a {
+            color: #1d4ed8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .author-info a:hover {
+            color: #1e3a8a;
+            text-decoration: underline;
+        }
+
+        /* 折叠按钮样式 */
+        .toggle-author-info {
+            background: none;
+            border: none;
+            color: #1d4ed8;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-author-info:hover {
+            color: #1e3a8a;
+        }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
+
+<body class="bg-gray-100 font-sans relative">
     <div class="container mx-auto p-8">
-        <h1 class="text-3xl font-bold text-center text-blue-500 mb-8">Nitrogen-rich Energetic Materials Information Database (Nemesis)</h1>
+        <h1 class="text-3xl font-bold text-center text-blue-500 mb-4">Nitrogen-rich Energetic Materials Information Database (Nemesis)</h1>
+        <div class="flex justify-center">
+            <button class="toggle-author-info" onclick="toggleAuthorInfo()">
+                <i class="fa-solid fa-info-circle mr-1"></i>
+                Show Author Information
+            </button>
+        </div>
+        <div class="author-info" id="authorInfo">
+            Developed by Laboratory of High Pressure Physics and Material Science, Qufu Normal University (Guanghui Zhang, Wencai Yi)<br>
+            Contact: <a href="mailto:yi.wencai@163.com">yi.wencai@163.com</a>
+        </div>
 
         <!-- Search Box -->
         <div class="search-container max-w-2xl mx-auto mb-8">
@@ -260,6 +308,20 @@
                 }
             });
         }
+
+        function toggleAuthorInfo() {
+            const authorInfo = document.getElementById('authorInfo');
+            const button = document.querySelector('.toggle-author-info');
+            if (authorInfo.style.maxHeight === '0px' || authorInfo.style.maxHeight === '') {
+                authorInfo.style.maxHeight = authorInfo.scrollHeight + 'px';
+                button.innerHTML = '<i class="fa-solid fa-info-circle mr-1"></i> Hide Author Information';
+            } else {
+                authorInfo.style.maxHeight = '0px';
+                button.innerHTML = '<i class="fa-solid fa-info-circle mr-1"></i> Show Author Information';
+            }
+        }
     </script>
 </body>
-</html>    
+
+</html>
+    
